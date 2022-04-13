@@ -1,0 +1,45 @@
+.logo {
+    height: 50px;
+    width: 200px;
+    cursor: pointer;
+}
+
+.logo-xl {
+    height: 90%;
+    width: 200px;
+    cursor: pointer;
+}
+
+.mat-toolbar {
+    background-color: white;
+    color: #000;
+}
+
+.backDropModal {
+    background-color: transparent;
+}
+
+.modal-title {
+    font-size: medium;
+}
+
+.footer-home > .mat-toolbar {
+    background-color: #ff0000;
+    color: white;
+}
+
+.footer-home span {
+    font-size: 10pt;
+    font-weight: bolder;
+}
+
+.footer-home mat-toolbar {
+    height: 100%;
+}
+
+.ScrollableContent {
+    height: auto;
+    overflow-y: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

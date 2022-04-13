@@ -1,0 +1,19 @@
+.scrollableArea {
+    height: auto;
+    overflow-y: scroll;
+}
+
+.table thead {
+    background-color: #ff0000;
+    color: #fff;
+    text-align: center;
+}
+
+button.mat-raised-button {
+    background-color: #ff0000 !important;
+    color: #fff !important;
+}
+
+.centrarTextoFila {
+    text-align: center;
+}

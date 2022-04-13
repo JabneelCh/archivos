@@ -1,0 +1,76 @@
+.table thead {
+    background-color: #ff0000;
+    color: #fff;
+}
+.table-bordered th {
+    border-bottom: 3px solid #000;
+    border-top: 1px solid #ff0000;
+    border-left: 1px solid #ff0000;
+    border-right: 1px solid #ff0000;
+}
+
+mat-icon {
+    cursor: pointer;
+}
+
+.centrarTexto {
+    text-align: center;
+}
+
+.totalEncabezado {
+    background-color: #ff0000;
+    color: #fff;
+    height: 46px;
+    padding: 10px;
+}
+
+.totalEncabezado span {
+    font-size: large;
+    font-weight: 600;
+}
+
+.concepto {
+    border-left: 1px solid lightgrey;
+    border-right: 1px solid lightgrey;
+    padding: 5px;
+}
+
+.concepto span {
+    font-weight: 700;
+}
+
+.monto {
+    text-align: end;
+}
+
+.separador {
+    border: 1px solid #000;
+}
+
+.totalSolicitud {
+    border-left: 1px solid lightgrey;
+    border-right: 1px solid lightgrey;
+    border-bottom: 1px solid lightgrey;
+    padding: 5px;
+}
+
+.totalSolicitud span {
+    font-weight: 700;
+}
+
+button.mat-raised-button {
+    background-color: #ff0000 !important;
+    color: #fff;
+}
+
+.almacen {
+    cursor: pointer;
+}
+
+.almacen:hover {
+    color: #ff0000;
+}
+
+.mat-form-field {
+    width: 100%;
+}

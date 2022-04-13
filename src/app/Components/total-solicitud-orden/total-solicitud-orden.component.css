@@ -1,0 +1,28 @@
+.TotalSolicitudOrden {
+    border: 1px solid lightgrey;
+    font-weight: bold;
+    font-size: medium;
+}
+
+.observaciones {
+    border: 1px solid lightgrey;
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+.concepto {
+    background-color: #ff0000;
+    color: #fff;
+    text-align: center;
+}
+
+.monto {
+    color: #000;
+    text-align: center;
+}
+
+.observacion {
+    color: #000;
+    text-align: start;
+    margin-left: 2px;
+}

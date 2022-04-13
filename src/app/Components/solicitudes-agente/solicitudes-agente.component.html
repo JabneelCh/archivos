@@ -1,0 +1,71 @@
+<nz-page-header nzTitle="Solicitudes de orden de compra por autorizar" nzBackIcon>
+</nz-page-header>
+<div fxLayout="row">
+    <div fxFlexOffset="10" fxFlex.xs="30" fxFlex.sm="30" fxFlex.md="20" fxFlex.lg="20" fxFlex.xl="20">
+        <mat-form-field appearance="standard">
+            <mat-label>Agente</mat-label>
+            <mat-select [(ngModel)]="agente" name="agenteCte" (ngModelChange)="seleccionarAgente($event)">
+                <mat-option value="">TODOS</mat-option>
+                <mat-option *ngFor="let agente of agentes" [value]="agente.agenteID">{{agente.nombre}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</div>
+<div fxLayout="row" *ngIf="solicitudesAgente.length > 0; else sinSolicitudes">
+    <div fxFlexOffset="10" fxFlex="80">
+        <mat-accordion multi>
+            <mat-expansion-panel *ngFor="let solicitud of solicitudesAgente">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>{{ 'Folio: ' + solicitud.folio }}</mat-panel-title>
+                    <mat-panel-description>
+                        <div fxLayout="row" fxFill>
+                            <div fxFlex.xs="40" fxFlex.sm="40" fxFlex.md="60" fxFlex.lg="60" fxFlex.xl="60">
+                               Fecha Alta: {{ solicitud.fechaAlta | date: 'dd/MM/YYYY' }}
+                            </div>
+                            <div fxFlex.xs="10" fxFlex.sm="10" fxFlex.md="15" fxFlex.lg="15" fxFlex.xl="15">
+                                <button mat-raised-button (click)="autorizarRechazarSolicitud(solicitud, 'RECHAZAR')">
+                                    Rechazar
+                                </button>
+                            </div>
+                            <div fxFlexOffset.xs="5" fxFlex.xs="20" fxFlexOffset.sm="5" fxFlex.sm="20" fxFlex.md="15" fxFlex.lg="15" fxFlex.xl="15">
+                                <button mat-raised-button (click)="autorizarRechazarSolicitud(solicitud, 'AUTORIZAR')">
+                                    Autorizar
+                                </button>
+                            </div>
+                        </div>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Articulo</th>
+                                <th>Descripción</th>
+                                <th>Cantidad</th>
+                                <th>Precio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let detalle of solicitud.rSubdistribuidorD">
+                                <td>{{ detalle.articulo }}</td>
+                                <td>{{ detalle.descripcion }}</td>
+                                <td>{{ detalle.cantidad }}</td>
+                                <td>{{ detalle.precio| currency }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <app-total-solicitud-orden [Importe]="solicitud.importe" [Impuestos]="solicitud.impuestos" [Observaciones]="solicitud.observaciones"></app-total-solicitud-orden>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+</div>
+<ng-template #sinSolicitudes>
+    <div fxLayout="row">
+        <div fxFlexOffset="10" fxFlex="80">
+            <nz-result nzStatus="info" nzTitle="No se han encontrado solicitudes">
+            </nz-result>
+        </div>
+    </div>
+</ng-template>

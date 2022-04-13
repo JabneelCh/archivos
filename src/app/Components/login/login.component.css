@@ -1,0 +1,15 @@
+.linearlayout {
+    display: block;
+}
+
+mat-card {
+    background-color: whitesmoke;
+}
+
+.buttonSmallResolution {
+    width: 100%;
+}
+
+.smallText {
+    font-size: medium;
+}

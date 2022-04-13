@@ -1,0 +1,35 @@
+.img-articulo img {
+    width: 100%;
+    height: auto;
+}
+
+.disponibles thead th {
+    background-color: #ff0000;
+    color: white;
+    text-align: center;
+}
+
+.disponibles tbody td {
+    text-align: center;
+}
+
+.disponibles tbody tr:hover {
+    background-color: yellow;
+    cursor: pointer;
+}
+
+.descripcion-small-size {
+    margin-left: 5%;
+}
+
+button.mat-raised-button {
+    background-color: #ff0000;
+    color: #fff;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.almacenSeleccionado {
+    font-weight: bolder !important;
+    background-color: yellow !important;
+}

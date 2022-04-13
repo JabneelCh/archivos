@@ -1,0 +1,69 @@
+<div fxLayout="column" fxFill>
+    <div fxFlex="10">
+        <mat-toolbar class="mat-elevation-z5">
+        </mat-toolbar>
+    </div>
+    <div fxFlex="80" class="scrollableArea">
+        <nz-page-header nzTitle="Aplicar descuentos a solicitudes de ordenes"></nz-page-header>
+        <div fxLayout="row">
+            <div fxFlexOffset="10" fxFlex="30">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Buscar cliente</mat-label>
+                    <input type="text" matInput [formControl]="clienteControl" [matAutocomplete]="autoCte" (keyup)="buscarClientes()">
+                    <mat-autocomplete #autoCte="matAutocomplete" (optionSelected)="seleccionarCliente()">
+                        <mat-option *ngFor="let cliente of Clientes" [value]="cliente.cliente">
+                            {{cliente.cliente}}-{{cliente.nombre}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+            </div>
+        </div>
+        <div fxLayout="row">
+            <div fxFlexOffset="10" fxFlex="80">
+                <mat-accordion multi *ngIf="solicitudesRevision.length > 0; else sinSolicitudes">
+                    <mat-expansion-panel *ngFor="let solicitud of solicitudesRevision">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>{{ 'Folio: ' + solicitud.folio }}</mat-panel-title>
+                            <mat-panel-description>
+                                <div fxLayout="row" fxFill>
+                                    <div fxFlex.xs="40" fxFlex.sm="40" fxFlex.md="60" fxFlex.lg="60" fxFlex.xl="60">
+                                       Fecha Alta: {{ solicitud.fechaAlta | date: 'dd/MM/YYYY' }}
+                                    </div>
+                                </div>
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+        
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Articulo</th>
+                                        <th>Descripción</th>
+                                        <th>Cantidad</th>
+                                        <th>Precio</th>
+                                        <th>Descuento</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let detalle of solicitud.rSubdistribuidorD">
+                                        <td>{{ detalle.articulo }}</td>
+                                        <td>{{ detalle.descripcion }}</td>
+                                        <td class="centrarTextoFila">{{ detalle.cantidad }}</td>
+                                        <td class="centrarTextoFila">{{ detalle.precio| currency }}</td>
+                                        <td class="centrarTextoFila">
+                                            <nz-input-number [(ngModel)]="detalle.porcentajeDescuento" [nzStep]="0.5" [nzSize]="'small'"></nz-input-number>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <app-total-solicitud-orden [Importe]="solicitud.importe" [Impuestos]="solicitud.impuestos" [Observaciones]="solicitud.observaciones"></app-total-solicitud-orden>
+                    </mat-expansion-panel>
+                </mat-accordion>
+                <ng-template #sinSolicitudes>
+                    <nz-result nzStatus="info" nzTitle="por favor busque y seleccione un cliente"></nz-result>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>

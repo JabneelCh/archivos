@@ -1,0 +1,37 @@
+<div fxLayout="row" fxFill>
+    <div fxFlexOffset.xs="2" fxFlex.xs="96" fxFlexOffset.sm="2" fxFlex.sm="96"  fxFlexOffset.lg="25" fxFlex.lg="50" fxFlexOffset.xl="25" fxFlex.xl="50">
+        <div fxLayout="column">
+            <div fxFlexOffset="10" fxFlex="50">
+                <mat-card>
+                    <mat-card-header>
+                        <img mat-card-image src="assets/img/Logotipo_C.png" alt="logo vitrohogar">
+                    </mat-card-header>
+                    <mat-card-content>
+                        <mat-card-title ngClass.xs="smallText" ngClass.sm="smallText">{{title}}</mat-card-title>
+                        <form [formGroup]="loginForm" (ngSubmit)="login()">
+                            <mat-form-field appearance="fill" class="linearlayout">
+                                <mat-label>Correo electronico, No. de cliente ó No. de Agente</mat-label>
+                                <input matInput formControlName="usuario" required>
+                                <mat-icon matSuffix>person</mat-icon>
+                                <mat-error *ngIf="usuario?.errors?.['required']">Ingrese su número de cliente</mat-error>
+                            </mat-form-field>
+                    
+                            <mat-form-field appearance="fill" class="linearlayout">
+                                <mat-label>Contraseña</mat-label>
+                                <input matInput type="password" formControlName="contrasena" required>
+                                <mat-icon matSuffix>lock</mat-icon>
+                                <mat-error *ngIf="contrasena?.errors?.['required']">Ingrese la contraseña</mat-error>
+                            </mat-form-field>
+                            <div fxLayout="row">
+                                <a (click)="restablecerContrasena()">Restablecer contraseña</a>
+                            </div>
+                            <div fxLayout="row-reverse" fxFill>
+                                <button type="submit" [disabled]="loginForm.invalid" mat-raised-button color="warn" ngClass.xs="buttonSmallResolution" ngClass.sm="buttonSmallResolution">Entrar</button>
+                            </div>
+                        </form>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
